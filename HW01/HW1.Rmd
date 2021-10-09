@@ -1,0 +1,62 @@
+---
+title: "R Notebook Homework 1"
+output: html_notebook
+---
+
+```{r}
+my.hw1.ex1 = function(x, a, b) {
+  cat("Ex1:\n")
+  cat("a) ", mean(x), "\n")
+  cat("b) ", log2(x), "\n")
+  cat("c) ", max(x) - min(x), "\n")
+  y = (x - a) / b
+  cat("d) ", y, "\n")
+  cat("e) mean(y) = ", mean(y), " sd(y) = ", sd(y), "\n")
+  cat("\n")
+}
+```
+
+```{r}
+my.hw1.ex2 = function(x) {
+  cat("Ex2:\n")
+  cat("Total: ", sum(x), "\n")
+  cat("Min: ", min(x), " Max: ", max(x), "\n")
+  cat("count(x > 40) = ", length(x[x > 40]), " = ", length(x[x > 40]) / length(x) * 100, "%\n")
+  cat("\n")
+}
+```
+
+```{r}
+my.utils.read_double_from_stdin = function() {
+  cat("Enter a number: \n")
+  as.double(readline(prompt = ""))
+}
+```
+
+
+```{r}
+my.hw1.ex3 = function() {
+  v = c()
+  for (i in 1:5) {
+    v[i] = my.utils.read_double_from_stdin()
+  }
+  v
+  cat("Max: ", max(v), "\n")
+  cat("Min: ", min(v), "\n")
+  cat("Mean: ", mean(v), "\n")
+  cat("Median: ", median(v), "\n")
+  cat("Sd: ", sd(v), "\n")
+  cat("Sorted: ", sort(v), "\n")
+  cat("Standardized: ", (v - mean(v)) / sd(v), "\n")
+  cat("Standardized: ", as.vector(scale(v)), "\n")
+}
+```
+
+
+```{r}
+my.hw1.ex1(c(1, 8, 2, 6, 2, 8, 8, 5, 5, 5), 5, 2.624669)
+my.hw1.ex2(c(46, 33, 39, 37, 36, 30, 48, 32, 49, 35, 30, 48))
+```
+```{r}
+my.hw1.ex3()
+```
