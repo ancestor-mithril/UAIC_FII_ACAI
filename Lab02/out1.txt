@@ -1,0 +1,11 @@
+"State" "Murder"
+"1" "Alabama" 15.1
+"2" "Alaska" 11.3
+"3" "Arizona" 7.8
+"4" "Arkansas" 10.1
+"5" "California" 10.3
+"6" "Colorado" 6.8
+"7" "Connecticut" 3.1
+"8" "Delaware" 6.2
+"9" "Florida" 10.7
+"10" "Georgia" 13.9
