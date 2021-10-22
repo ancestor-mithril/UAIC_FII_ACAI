@@ -53,12 +53,13 @@ my.utils.clt = function(n) {
 
 my.hw2.ex4.b = function() {
   for (i in c(1, 5, 10, 100)) {
-    barplot(my.utils.clt(i), main = paste0("Hist of CLT(", i, ")"), ylim = c(0, 20))
+    hist(my.utils.clt(i), main = paste0("Hist of CLT(", i, ")"), ylim = c(0, 200), breaks = 20)
   }
 }
 
 my.hw2.ex4.b()
 ```
+
 ```{r}
 my.utils.generate_binomial_vector = function(n) {
   rbinom(n, 20, 0.1)
@@ -76,7 +77,7 @@ my.utils.clt_2 = function(n) {
 
 my.hw2.ex4.c = function() {
   for (i in c(1, 5, 10, 100)) {
-    barplot(my.utils.clt_2(i), main = paste0("Hist of CLT(", i, ")"), ylim = c(0, 20))
+    hist(my.utils.clt_2(i), main = paste0("Hist of CLT(", i, ")"), ylim = c(0, 200), breaks = 20)
   }
 }
 
