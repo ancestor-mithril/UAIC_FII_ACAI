@@ -1,0 +1,112 @@
+---
+title: "R Notebook Homework 3"
+output: html_notebook
+---
+
+
+```{r}
+alcohol = read.table("alcool.dat", header = T)
+alcohol
+
+```
+
+```{r}
+wine_a = alcohol$Alcool_din_vin
+deaths = alcohol$Decese_datorate_afectiunilor_cardiace
+wine_a
+deaths
+```
+```{r}
+# Ex. 1
+plot(deaths, wine_a, main="Deaths per wine alcohol", xlab="Deaths", ylab="wine alcohol", frame=TRUE, pch=19)
+abline(lm(wine_a ~ deaths), col = "blue")
+```
+
+
+```{r}
+x = lm(wine_a ~ deaths)
+summary(x)
+```
+
+
+
+```{r}
+studentiq = read.table("iq.dat", header = T)
+iq = studentiq$IQ
+grade = studentiq$Nota
+studentiq
+```
+
+
+
+```{r}
+# Ex. 2
+plot(iq, grade, main="iq per grade", xlab="iq", ylab="grade", frame=TRUE, pch=19)
+abline(lm(grade ~ iq), col = "blue")
+```
+
+```{r}
+y = lm(grade ~ iq)
+summary(y)
+```
+
+```{r}
+y$coefficients
+a = as.numeric(y$coefficients[1])
+b = as.numeric(y$coefficients[2])
+a + 115 * b
+a + 130 * b
+```
+
+```{r}
+# Ex. 3
+f = function(m, a, b, xmin, xmax, sigma) {
+  x = runif(m, xmin, xmax)
+  eps = rnorm(m, 0, sigma^2)
+  return(list(x, a + b * x + eps))
+}
+f(4, 1, 2, 3, 4, 5)
+```
+```{r}
+# Ex. 4
+g = function(x, y) {
+  n = length(y)
+  z = lm(y ~ x)
+  a = as.numeric(z$coefficients[1])
+  b = as.numeric(z$coefficients[2])
+  cat("ahat = ", a, "\n")
+  cat("bhat = ", b, "\n")
+  yhat = a + b * x
+  diff = yhat - y
+  s = sum(diff ^ 2) ^ 0.5 / (n - 2)
+  t = qt(0.975, n - 2)
+  e = t * s / (sum(x^2)^0.5)
+  cat("b = bhat +- T(2.5%) * S / sqrt(x^2) = (", b - e, ", ", b + e, ")",  "\n")
+  cat("a = ahat +- T(2.5%) * S / sqrt(x^2) = (", a - e, ", ", a + e, ")",  "\n")
+}
+g(c(100, 200, 300, 400,400,400,500, 600, 700), c(40, 50, 50, 70,120,0,65, 65, 80))
+```
+```{r}
+# Ex. 5
+"a)"
+r =  f(100, 10, 0.8, -200, 200, 1.5)
+g(r[[1]], r[[2]])
+"b)"
+r =  f(10, 10, 0.8, -5, 5, 1)
+g(r[[1]], r[[2]])
+"c)"
+r =  f(10000, 10, 0.8, -5, 5, 1)
+g(r[[1]], r[[2]])
+"d)"
+r =  f(10, 10, 0.8, 5, 5.2, 1)
+g(r[[1]], r[[2]])
+"e)"
+r =  f(10000, 10, 0.8, 5, 5.2, 1)
+g(r[[1]], r[[2]])
+"f)"
+r =  f(10, 10, 0.8, 5, 5.2, 0.01)
+g(r[[1]], r[[2]])
+```
+
+
+
