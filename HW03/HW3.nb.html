@@ -382,16 +382,16 @@ f = function(m, a, b, xmin, xmax, sigma) {
 }
 f(4, 1, 2, 3, 4, 5)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiW1sxXV1cblsxXSAzLjg2NDAwMiAzLjk2MzY0NiAzLjMxMzY5MSAzLjgyMDg3MVxuXG5bWzJdXVxuWzFdIDQ5Ljk5MzU3NiAzMC42MTQ4ODMgNDguMDgwNTM5IC05LjU4NjcwNFxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiW1sxXV1cblsxXSAzLjY0MjYwMCAzLjMxNDI5OSAzLjg2MTk0OCAzLjk1MDI3MlxuXG5bWzJdXVxuWzFdIC0yMC42ODY1MDQ1ICAyNS4zNTA2ODQ5ICAxOC4xNTg2OTk2ICAtMC41ODQ1OTYzXG4ifQ== -->
 <pre><code>[[1]]
-[1] 3.864002 3.963646 3.313691 3.820871
+[1] 3.642600 3.314299 3.861948 3.950272
 
 [[2]]
-[1] 49.993576 30.614883 48.080539 -9.586704</code></pre>
+[1] -20.6865045  25.3506849  18.1586996  -0.5845963</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeC4gNFxuZyA9IGZ1bmN0aW9uKHgsIHkpIHtcbiAgbiA9IGxlbmd0aCh5KVxuICB6ID0gbG0oeSB+IHgpXG4gIGEgPSBhcy5udW1lcmljKHokY29lZmZpY2llbnRzWzFdKVxuICBiID0gYXMubnVtZXJpYyh6JGNvZWZmaWNpZW50c1syXSlcbiAgY2F0KFwiYWhhdCA9IFwiLCBhLCBcIlxcblwiKVxuICBjYXQoXCJiaGF0ID0gXCIsIGIsIFwiXFxuXCIpXG4gIHloYXQgPSBhICsgYiAqIHhcbiAgZGlmZiA9IHloYXQgLSB5XG4gIHMgPSBzdW0oZGlmZiBeIDIpIF4gMC41IC8gKG4gLSAyKVxuICB0ID0gcXQoMC45NzUsIG4gLSAyKVxuICBlID0gdCAqIHMgLyAoc3VtKHheMileMC41KVxuICBjYXQoXCJiID0gYmhhdCArLSBUKDIuNSUpICogUyAvIHNxcnQoeF4yKSA9IChcIiwgYiAtIGUsIFwiLCBcIiwgYiArIGUsIFwiKVwiLCAgXCJcXG5cIilcbiAgY2F0KFwiYSA9IGFoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoXCIsIGEgLSBlLCBcIiwgXCIsIGEgKyBlLCBcIilcIiwgIFwiXFxuXCIpXG59XG5nKGMoMTAwLCAyMDAsIDMwMCwgNDAwLDQwMCw0MDAsNTAwLCA2MDAsIDcwMCksIGMoNDAsIDUwLCA1MCwgNzAsMTIwLDAsNjUsIDY1LCA4MCkpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeC4gNFxuZyA9IGZ1bmN0aW9uKHgsIHkpIHtcbiAgbiA9IGxlbmd0aCh5KVxuICB6ID0gbG0oeSB+IHgpXG4gIGEgPSBhcy5udW1lcmljKHokY29lZmZpY2llbnRzWzFdKVxuICBiID0gYXMubnVtZXJpYyh6JGNvZWZmaWNpZW50c1syXSlcbiAgY2F0KFwiYWhhdCA9IFwiLCBhLCBcIlxcblwiKVxuICBjYXQoXCJiaGF0ID0gXCIsIGIsIFwiXFxuXCIpXG4gIFxuICB5aGF0ID0gYSArIGIgKiB4XG4gIGRpZmYgPSB5aGF0IC0geVxuICBcbiAgbXNlID0gc3VtKGRpZmYgXiAyKVxuICBzdW14ID0gc3VtKHggXiAyKSBeIDAuNVxuICBzdW14MiA9IHN1bSgoeCAtIG1lYW4oeCkpIF4gMilcbiAgXG4gIHNiID1tc2UgXiAwLjUgLyAobiAtIDIpXG4gIFxuICB0ID0gcXQoMC45NzUsIG4gLSAyKVxuICBcbiAgZTEgPSB0ICogc2IgLyBzdW14XG4gIGUyID0gdCAqIHNiICogKCgxIC8gbiArICBtZWFuKHgpIC8gKHN1bXgpKSBeIDAuNSlcbiAgXG4gIGNhdChcImIgPSAgKFwiLCBiIC0gZTEsIFwiLCBcIiwgYiArIGUxLCBcIilcIiwgIFwiXFxuXCIpXG4gIGNhdChcImEgPSAoXCIsIGEgLSBlMiwgXCIsIFwiLCBhICsgZTIsIFwiKVwiLCAgXCJcXG5cIilcbn1cbmcoYygxMDAsIDIwMCwgMzAwLCA0MDAsNDAwLDQwMCw1MDAsIDYwMCwgNzAwKSwgYyg0MCwgNTAsIDUwLCA3MCwxMjAsMCw2NSwgNjUsIDgwKSlcbmBgYCJ9 -->
 <pre class="r"><code># Ex. 4
 g = function(x, y) {
   n = length(y)
@@ -400,21 +400,31 @@ g = function(x, y) {
   b = as.numeric(z$coefficients[2])
   cat(&quot;ahat = &quot;, a, &quot;\n&quot;)
   cat(&quot;bhat = &quot;, b, &quot;\n&quot;)
+  
   yhat = a + b * x
   diff = yhat - y
-  s = sum(diff ^ 2) ^ 0.5 / (n - 2)
+  
+  mse = sum(diff ^ 2)
+  sumx = sum(x ^ 2) ^ 0.5
+  sumx2 = sum((x - mean(x)) ^ 2)
+  
+  sb =mse ^ 0.5 / (n - 2)
+  
   t = qt(0.975, n - 2)
-  e = t * s / (sum(x^2)^0.5)
-  cat(&quot;b = bhat +- T(2.5%) * S / sqrt(x^2) = (&quot;, b - e, &quot;, &quot;, b + e, &quot;)&quot;,  &quot;\n&quot;)
-  cat(&quot;a = ahat +- T(2.5%) * S / sqrt(x^2) = (&quot;, a - e, &quot;, &quot;, a + e, &quot;)&quot;,  &quot;\n&quot;)
+  
+  e1 = t * sb / sumx
+  e2 = t * sb * ((1 / n +  mean(x) / (sumx)) ^ 0.5)
+  
+  cat(&quot;b =  (&quot;, b - e1, &quot;, &quot;, b + e1, &quot;)&quot;,  &quot;\n&quot;)
+  cat(&quot;a = (&quot;, a - e2, &quot;, &quot;, a + e2, &quot;)&quot;,  &quot;\n&quot;)
 }
 g(c(100, 200, 300, 400,400,400,500, 600, 700), c(40, 50, 50, 70,120,0,65, 65, 80))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAzNi40Mjg1NyBcbmJoYXQgPSAgMC4wNTg5Mjg1NyBcbmIgPSBiaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCAwLjAzNjgwNDc3ICwgIDAuMDgxMDUyMzcgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCAzNi40MDY0NSAsICAzNi40NTA3ICkgXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAzNi40Mjg1NyBcbmJoYXQgPSAgMC4wNTg5Mjg1NyBcbmIgPSAgKCAwLjAzNjgwNDc3ICwgIDAuMDgxMDUyMzcgKSBcbmEgPSAoIDE3LjcxMTk2ICwgIDU1LjE0NTE4ICkgXG4ifQ== -->
 <pre><code>ahat =  36.42857 
 bhat =  0.05892857 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.03680477 ,  0.08105237 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 36.40645 ,  36.4507 ) </code></pre>
+b =  ( 0.03680477 ,  0.08105237 ) 
+a = ( 17.71196 ,  55.14518 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
@@ -429,11 +439,11 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 36.40645 ,  36.4507 ) </code></pre>
 <pre class="r"><code>r =  f(100, 10, 0.8, -200, 200, 1.5)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC4yNTY3MiBcbmJoYXQgPSAgMC44MDEyMTc0IFxuYiA9IGJoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoIDAuODAwODIxOCAsICAwLjgwMTYxMjkgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCAxMC4yNTYzMiAsICAxMC4yNTcxMSApIFxuIn0= -->
-<pre><code>ahat =  10.25672 
-bhat =  0.8012174 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.8008218 ,  0.8016129 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 10.25632 ,  10.25711 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICA5LjgyMDgyNCBcbmJoYXQgPSAgMC44MDE2Njk4IFxuYiA9ICAoIDAuODAxMjIzNSAsICAwLjgwMjExNiApIFxuYSA9ICggOS43NzM5OTMgLCAgOS44Njc2NTUgKSBcbiJ9 -->
+<pre><code>ahat =  9.820824 
+bhat =  0.8016698 
+b =  ( 0.8012235 ,  0.802116 ) 
+a = ( 9.773993 ,  9.867655 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJiKVwiXG5gYGAifQ== -->
 <pre class="r"><code>&quot;b)&quot;</code></pre>
@@ -445,11 +455,11 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 10.25632 ,  10.25711 ) </code></pre>
 <pre class="r"><code>r =  f(10, 10, 0.8, -5, 5, 1)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC4wNjM1NCBcbmJoYXQgPSAgMC43ODg1NTM3IFxuYiA9IGJoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoIDAuNjkxNzAzMiAsICAwLjg4NTQwNDIgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCA5Ljk2NjY5MiAsICAxMC4xNjAzOSApIFxuIn0= -->
-<pre><code>ahat =  10.06354 
-bhat =  0.7885537 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.6917032 ,  0.8854042 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 9.966692 ,  10.16039 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICA5LjY1MzIwMiBcbmJoYXQgPSAgMC42NzkwMzU2IFxuYiA9ICAoIDAuNTY0MzE4ICwgIDAuNzkzNzUzMyApIFxuYSA9ICggOS4xNzQwNjEgLCAgMTAuMTMyMzQgKSBcbiJ9 -->
+<pre><code>ahat =  9.653202 
+bhat =  0.6790356 
+b =  ( 0.564318 ,  0.7937533 ) 
+a = ( 9.174061 ,  10.13234 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJjKVwiXG5gYGAifQ== -->
 <pre class="r"><code>&quot;c)&quot;</code></pre>
@@ -461,11 +471,11 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 9.966692 ,  10.16039 ) </code></pre>
 <pre class="r"><code>r =  f(10000, 10, 0.8, -5, 5, 1)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICA5Ljk5NDU1NCBcbmJoYXQgPSAgMC44MDE4MzIzIFxuYiA9IGJoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoIDAuODAxNzY1NSAsICAwLjgwMTg5OTEgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCA5Ljk5NDQ4NyAsICA5Ljk5NDYyMSApIFxuIn0= -->
-<pre><code>ahat =  9.994554 
-bhat =  0.8018323 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.8017655 ,  0.8018991 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 9.994487 ,  9.994621 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC4wMDgyNiBcbmJoYXQgPSAgMC44MDQwOTA2IFxuYiA9ICAoIDAuODA0MDIzNCAsICAwLjgwNDE1NzggKSBcbmEgPSAoIDEwLjAwODA4ICwgIDEwLjAwODQ1ICkgXG4ifQ== -->
+<pre><code>ahat =  10.00826 
+bhat =  0.8040906 
+b =  ( 0.8040234 ,  0.8041578 ) 
+a = ( 10.00808 ,  10.00845 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJkKVwiXG5gYGAifQ== -->
 <pre class="r"><code>&quot;d)&quot;</code></pre>
@@ -477,11 +487,11 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 9.994487 ,  9.994621 ) </code></pre>
 <pre class="r"><code>r =  f(10, 10, 0.8, 5, 5.2, 1)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAtMS4zMDE0NDYgXG5iaGF0ID0gIDMuMDEzMjE3IFxuYiA9IGJoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoIDIuOTg0OTU2ICwgIDMuMDQxNDc4ICkgXG5hID0gYWhhdCArLSBUKDIuNSUpICogUyAvIHNxcnQoeF4yKSA9ICggLTEuMzI5NzA3ICwgIC0xLjI3MzE4NSApIFxuIn0= -->
-<pre><code>ahat =  -1.301446 
-bhat =  3.013217 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 2.984956 ,  3.041478 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( -1.329707 ,  -1.273185 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAzMy4wMzcyNiBcbmJoYXQgPSAgLTMuNzcwMDc2IFxuYiA9ICAoIC0zLjgyMDQ1NiAsICAtMy43MTk2OTcgKSBcbmEgPSAoIDMyLjUxMzQzICwgIDMzLjU2MTEgKSBcbiJ9 -->
+<pre><code>ahat =  33.03726 
+bhat =  -3.770076 
+b =  ( -3.820456 ,  -3.719697 ) 
+a = ( 32.51343 ,  33.5611 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJlKVwiXG5gYGAifQ== -->
 <pre class="r"><code>&quot;e)&quot;</code></pre>
@@ -493,11 +503,11 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( -1.329707 ,  -1.273185 ) </code></pre>
 <pre class="r"><code>r =  f(10000, 10, 0.8, 5, 5.2, 1)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC42MTk5OSBcbmJoYXQgPSAgMC42NzY0NDI1IFxuYiA9IGJoYXQgKy0gVCgyLjUlKSAqIFMgLyBzcXJ0KHheMikgPSAoIDAuNjc2NDAzOCAsICAwLjY3NjQ4MTMgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCAxMC42MTk5NSAsICAxMC42MjAwMyApIFxuIn0= -->
-<pre><code>ahat =  10.61999 
-bhat =  0.6764425 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.6764038 ,  0.6764813 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 10.61995 ,  10.62003 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC45ODM1MyBcbmJoYXQgPSAgMC42MDUxODU4IFxuYiA9ICAoIDAuNjA1MTQ3OSAsICAwLjYwNTIyMzcgKSBcbmEgPSAoIDEwLjk4MTU4ICwgIDEwLjk4NTQ3ICkgXG4ifQ== -->
+<pre><code>ahat =  10.98353 
+bhat =  0.6051858 
+b =  ( 0.6051479 ,  0.6052237 ) 
+a = ( 10.98158 ,  10.98547 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXCJmKVwiXG5gYGAifQ== -->
 <pre class="r"><code>&quot;f)&quot;</code></pre>
@@ -509,17 +519,17 @@ a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 10.61995 ,  10.62003 ) </code></pre>
 <pre class="r"><code>r =  f(10, 10, 0.8, 5, 5.2, 0.01)
 g(r[[1]], r[[2]])</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICA5Ljk5OTI2MyBcbmJoYXQgPSAgMC44MDAxMzEgXG5iID0gYmhhdCArLSBUKDIuNSUpICogUyAvIHNxcnQoeF4yKSA9ICggMC44MDAxMjcgLCAgMC44MDAxMzUgKSBcbmEgPSBhaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCA5Ljk5OTI1OSAsICA5Ljk5OTI2NyApIFxuIn0= -->
-<pre><code>ahat =  9.999263 
-bhat =  0.800131 
-b = bhat +- T(2.5%) * S / sqrt(x^2) = ( 0.800127 ,  0.800135 ) 
-a = ahat +- T(2.5%) * S / sqrt(x^2) = ( 9.999259 ,  9.999267 ) </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiYWhhdCA9ICAxMC4wMDE2OSBcbmJoYXQgPSAgMC43OTk2NTg3IFxuYiA9ICAoIDAuNzk5NjUyOCAsICAwLjc5OTY2NDcgKSBcbmEgPSAoIDEwLjAwMTYzICwgIDEwLjAwMTc1ICkgXG4ifQ== -->
+<pre><code>ahat =  10.00169 
+bhat =  0.7996587 
+b =  ( 0.7996528 ,  0.7996647 ) 
+a = ( 10.00163 ,  10.00175 ) </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2sgSG9tZXdvcmsgMyINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCg0KYGBge3J9DQphbGNvaG9sID0gcmVhZC50YWJsZSgiYWxjb29sLmRhdCIsIGhlYWRlciA9IFQpDQphbGNvaG9sDQoNCmBgYA0KDQpgYGB7cn0NCndpbmVfYSA9IGFsY29ob2wkQWxjb29sX2Rpbl92aW4NCmRlYXRocyA9IGFsY29ob2wkRGVjZXNlX2RhdG9yYXRlX2FmZWN0aXVuaWxvcl9jYXJkaWFjZQ0Kd2luZV9hDQpkZWF0aHMNCmBgYA0KYGBge3J9DQojIEV4LiAxDQpwbG90KGRlYXRocywgd2luZV9hLCBtYWluPSJEZWF0aHMgcGVyIHdpbmUgYWxjb2hvbCIsIHhsYWI9IkRlYXRocyIsIHlsYWI9IndpbmUgYWxjb2hvbCIsIGZyYW1lPVRSVUUsIHBjaD0xOSkNCmFibGluZShsbSh3aW5lX2EgfiBkZWF0aHMpLCBjb2wgPSAiYmx1ZSIpDQpgYGANCg0KDQpgYGB7cn0NCnggPSBsbSh3aW5lX2EgfiBkZWF0aHMpDQpzdW1tYXJ5KHgpDQpgYGANCg0KDQoNCmBgYHtyfQ0Kc3R1ZGVudGlxID0gcmVhZC50YWJsZSgiaXEuZGF0IiwgaGVhZGVyID0gVCkNCmlxID0gc3R1ZGVudGlxJElRDQpncmFkZSA9IHN0dWRlbnRpcSROb3RhDQpzdHVkZW50aXENCmBgYA0KDQoNCg0KYGBge3J9DQojIEV4LiAyDQpwbG90KGlxLCBncmFkZSwgbWFpbj0iaXEgcGVyIGdyYWRlIiwgeGxhYj0iaXEiLCB5bGFiPSJncmFkZSIsIGZyYW1lPVRSVUUsIHBjaD0xOSkNCmFibGluZShsbShncmFkZSB+IGlxKSwgY29sID0gImJsdWUiKQ0KYGBgDQoNCmBgYHtyfQ0KeSA9IGxtKGdyYWRlIH4gaXEpDQpzdW1tYXJ5KHkpDQpgYGANCg0KYGBge3J9DQp5JGNvZWZmaWNpZW50cw0KYSA9IGFzLm51bWVyaWMoeSRjb2VmZmljaWVudHNbMV0pDQpiID0gYXMubnVtZXJpYyh5JGNvZWZmaWNpZW50c1syXSkNCmEgKyAxMTUgKiBiDQphICsgMTMwICogYg0KYGBgDQoNCmBgYHtyfQ0KIyBFeC4gMw0KZiA9IGZ1bmN0aW9uKG0sIGEsIGIsIHhtaW4sIHhtYXgsIHNpZ21hKSB7DQogIHggPSBydW5pZihtLCB4bWluLCB4bWF4KQ0KICBlcHMgPSBybm9ybShtLCAwLCBzaWdtYV4yKQ0KICByZXR1cm4obGlzdCh4LCBhICsgYiAqIHggKyBlcHMpKQ0KfQ0KZig0LCAxLCAyLCAzLCA0LCA1KQ0KYGBgDQpgYGB7cn0NCiMgRXguIDQNCmcgPSBmdW5jdGlvbih4LCB5KSB7DQogIG4gPSBsZW5ndGgoeSkNCiAgeiA9IGxtKHkgfiB4KQ0KICBhID0gYXMubnVtZXJpYyh6JGNvZWZmaWNpZW50c1sxXSkNCiAgYiA9IGFzLm51bWVyaWMoeiRjb2VmZmljaWVudHNbMl0pDQogIGNhdCgiYWhhdCA9ICIsIGEsICJcbiIpDQogIGNhdCgiYmhhdCA9ICIsIGIsICJcbiIpDQogIHloYXQgPSBhICsgYiAqIHgNCiAgZGlmZiA9IHloYXQgLSB5DQogIHMgPSBzdW0oZGlmZiBeIDIpIF4gMC41IC8gKG4gLSAyKQ0KICB0ID0gcXQoMC45NzUsIG4gLSAyKQ0KICBlID0gdCAqIHMgLyAoc3VtKHheMileMC41KQ0KICBjYXQoImIgPSBiaGF0ICstIFQoMi41JSkgKiBTIC8gc3FydCh4XjIpID0gKCIsIGIgLSBlLCAiLCAiLCBiICsgZSwgIikiLCAgIlxuIikNCiAgY2F0KCJhID0gYWhhdCArLSBUKDIuNSUpICogUyAvIHNxcnQoeF4yKSA9ICgiLCBhIC0gZSwgIiwgIiwgYSArIGUsICIpIiwgICJcbiIpDQp9DQpnKGMoMTAwLCAyMDAsIDMwMCwgNDAwLDQwMCw0MDAsNTAwLCA2MDAsIDcwMCksIGMoNDAsIDUwLCA1MCwgNzAsMTIwLDAsNjUsIDY1LCA4MCkpDQpgYGANCmBgYHtyfQ0KIyBFeC4gNQ0KImEpIg0KciA9ICBmKDEwMCwgMTAsIDAuOCwgLTIwMCwgMjAwLCAxLjUpDQpnKHJbWzFdXSwgcltbMl1dKQ0KImIpIg0KciA9ICBmKDEwLCAxMCwgMC44LCAtNSwgNSwgMSkNCmcocltbMV1dLCByW1syXV0pDQoiYykiDQpyID0gIGYoMTAwMDAsIDEwLCAwLjgsIC01LCA1LCAxKQ0KZyhyW1sxXV0sIHJbWzJdXSkNCiJkKSINCnIgPSAgZigxMCwgMTAsIDAuOCwgNSwgNS4yLCAxKQ0KZyhyW1sxXV0sIHJbWzJdXSkNCiJlKSINCnIgPSAgZigxMDAwMCwgMTAsIDAuOCwgNSwgNS4yLCAxKQ0KZyhyW1sxXV0sIHJbWzJdXSkNCiJmKSINCnIgPSAgZigxMCwgMTAsIDAuOCwgNSwgNS4yLCAwLjAxKQ0KZyhyW1sxXV0sIHJbWzJdXSkNCmBgYA0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2sgSG9tZXdvcmsgMyINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCg0KYGBge3J9DQphbGNvaG9sID0gcmVhZC50YWJsZSgiYWxjb29sLmRhdCIsIGhlYWRlciA9IFQpDQphbGNvaG9sDQoNCmBgYA0KDQpgYGB7cn0NCndpbmVfYSA9IGFsY29ob2wkQWxjb29sX2Rpbl92aW4NCmRlYXRocyA9IGFsY29ob2wkRGVjZXNlX2RhdG9yYXRlX2FmZWN0aXVuaWxvcl9jYXJkaWFjZQ0Kd2luZV9hDQpkZWF0aHMNCmBgYA0KYGBge3J9DQojIEV4LiAxDQpwbG90KGRlYXRocywgd2luZV9hLCBtYWluPSJEZWF0aHMgcGVyIHdpbmUgYWxjb2hvbCIsIHhsYWI9IkRlYXRocyIsIHlsYWI9IndpbmUgYWxjb2hvbCIsIGZyYW1lPVRSVUUsIHBjaD0xOSkNCmFibGluZShsbSh3aW5lX2EgfiBkZWF0aHMpLCBjb2wgPSAiYmx1ZSIpDQpgYGANCg0KDQpgYGB7cn0NCnggPSBsbSh3aW5lX2EgfiBkZWF0aHMpDQpzdW1tYXJ5KHgpDQpgYGANCg0KDQoNCmBgYHtyfQ0Kc3R1ZGVudGlxID0gcmVhZC50YWJsZSgiaXEuZGF0IiwgaGVhZGVyID0gVCkNCmlxID0gc3R1ZGVudGlxJElRDQpncmFkZSA9IHN0dWRlbnRpcSROb3RhDQpzdHVkZW50aXENCmBgYA0KDQoNCg0KYGBge3J9DQojIEV4LiAyDQpwbG90KGlxLCBncmFkZSwgbWFpbj0iaXEgcGVyIGdyYWRlIiwgeGxhYj0iaXEiLCB5bGFiPSJncmFkZSIsIGZyYW1lPVRSVUUsIHBjaD0xOSkNCmFibGluZShsbShncmFkZSB+IGlxKSwgY29sID0gImJsdWUiKQ0KYGBgDQoNCmBgYHtyfQ0KeSA9IGxtKGdyYWRlIH4gaXEpDQpzdW1tYXJ5KHkpDQpgYGANCg0KYGBge3J9DQp5JGNvZWZmaWNpZW50cw0KYSA9IGFzLm51bWVyaWMoeSRjb2VmZmljaWVudHNbMV0pDQpiID0gYXMubnVtZXJpYyh5JGNvZWZmaWNpZW50c1syXSkNCmEgKyAxMTUgKiBiDQphICsgMTMwICogYg0KYGBgDQoNCmBgYHtyfQ0KIyBFeC4gMw0KZiA9IGZ1bmN0aW9uKG0sIGEsIGIsIHhtaW4sIHhtYXgsIHNpZ21hKSB7DQogIHggPSBydW5pZihtLCB4bWluLCB4bWF4KQ0KICBlcHMgPSBybm9ybShtLCAwLCBzaWdtYV4yKQ0KICByZXR1cm4obGlzdCh4LCBhICsgYiAqIHggKyBlcHMpKQ0KfQ0KZig0LCAxLCAyLCAzLCA0LCA1KQ0KYGBgDQpgYGB7cn0NCiMgRXguIDQNCmcgPSBmdW5jdGlvbih4LCB5KSB7DQogIG4gPSBsZW5ndGgoeSkNCiAgeiA9IGxtKHkgfiB4KQ0KICBhID0gYXMubnVtZXJpYyh6JGNvZWZmaWNpZW50c1sxXSkNCiAgYiA9IGFzLm51bWVyaWMoeiRjb2VmZmljaWVudHNbMl0pDQogIGNhdCgiYWhhdCA9ICIsIGEsICJcbiIpDQogIGNhdCgiYmhhdCA9ICIsIGIsICJcbiIpDQogIA0KICB5aGF0ID0gYSArIGIgKiB4DQogIGRpZmYgPSB5aGF0IC0geQ0KICANCiAgbXNlID0gc3VtKGRpZmYgXiAyKQ0KICBzdW14ID0gc3VtKHggXiAyKSBeIDAuNQ0KICBzdW14MiA9IHN1bSgoeCAtIG1lYW4oeCkpIF4gMikNCiAgDQogIHNiID1tc2UgXiAwLjUgLyAobiAtIDIpDQogIA0KICB0ID0gcXQoMC45NzUsIG4gLSAyKQ0KICANCiAgZTEgPSB0ICogc2IgLyBzdW14DQogIGUyID0gdCAqIHNiICogKCgxIC8gbiArICBtZWFuKHgpIC8gKHN1bXgpKSBeIDAuNSkNCiAgDQogIGNhdCgiYiA9ICAoIiwgYiAtIGUxLCAiLCAiLCBiICsgZTEsICIpIiwgICJcbiIpDQogIGNhdCgiYSA9ICgiLCBhIC0gZTIsICIsICIsIGEgKyBlMiwgIikiLCAgIlxuIikNCn0NCmcoYygxMDAsIDIwMCwgMzAwLCA0MDAsNDAwLDQwMCw1MDAsIDYwMCwgNzAwKSwgYyg0MCwgNTAsIDUwLCA3MCwxMjAsMCw2NSwgNjUsIDgwKSkNCmBgYA0KYGBge3J9DQojIEV4LiA1DQoiYSkiDQpyID0gIGYoMTAwLCAxMCwgMC44LCAtMjAwLCAyMDAsIDEuNSkNCmcocltbMV1dLCByW1syXV0pDQoiYikiDQpyID0gIGYoMTAsIDEwLCAwLjgsIC01LCA1LCAxKQ0KZyhyW1sxXV0sIHJbWzJdXSkNCiJjKSINCnIgPSAgZigxMDAwMCwgMTAsIDAuOCwgLTUsIDUsIDEpDQpnKHJbWzFdXSwgcltbMl1dKQ0KImQpIg0KciA9ICBmKDEwLCAxMCwgMC44LCA1LCA1LjIsIDEpDQpnKHJbWzFdXSwgcltbMl1dKQ0KImUpIg0KciA9ICBmKDEwMDAwLCAxMCwgMC44LCA1LCA1LjIsIDEpDQpnKHJbWzFdXSwgcltbMl1dKQ0KImYpIg0KciA9ICBmKDEwLCAxMCwgMC44LCA1LCA1LjIsIDAuMDEpDQpnKHJbWzFdXSwgcltbMl1dKQ0KYGBgDQoNCg0KDQo=</div>
 
 
 

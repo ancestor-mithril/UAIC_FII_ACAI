@@ -76,13 +76,23 @@ g = function(x, y) {
   b = as.numeric(z$coefficients[2])
   cat("ahat = ", a, "\n")
   cat("bhat = ", b, "\n")
+  
   yhat = a + b * x
   diff = yhat - y
-  s = sum(diff ^ 2) ^ 0.5 / (n - 2)
+  
+  mse = sum(diff ^ 2)
+  sumx = sum(x ^ 2) ^ 0.5
+  sumx2 = sum((x - mean(x)) ^ 2)
+  
+  sb =mse ^ 0.5 / (n - 2)
+  
   t = qt(0.975, n - 2)
-  e = t * s / (sum(x^2)^0.5)
-  cat("b = bhat +- T(2.5%) * S / sqrt(x^2) = (", b - e, ", ", b + e, ")",  "\n")
-  cat("a = ahat +- T(2.5%) * S / sqrt(x^2) = (", a - e, ", ", a + e, ")",  "\n")
+  
+  e1 = t * sb / sumx
+  e2 = t * sb * ((1 / n +  mean(x) / (sumx)) ^ 0.5)
+  
+  cat("b =  (", b - e1, ", ", b + e1, ")",  "\n")
+  cat("a = (", a - e2, ", ", a + e2, ")",  "\n")
 }
 g(c(100, 200, 300, 400,400,400,500, 600, 700), c(40, 50, 50, 70,120,0,65, 65, 80))
 ```
