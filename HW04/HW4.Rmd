@@ -1,0 +1,241 @@
+---
+title: "R Notebook Homework 4"
+output: html_notebook
+---
+
+```{r}
+house = read.table("house.dat", header = T)
+house
+```
+
+```{r}
+get_x_y = function(data) {
+  y = data[[1]]
+  x = matrix(data[[2]], nrow = length(y), ncol = 1)
+  for (i in 3:length(data)) {
+    x = cbind(x, data[[i]])
+  }
+  return(list(x, y))
+}
+```
+
+```{r}
+ret = get_x_y(house)
+x = ret[[1]]
+y = ret[[2]]
+x
+y
+```
+
+```{r}
+lm(y ~ x)
+```
+```{r}
+s_squared = NA
+get_s_squared = function(rss, m, n) {
+  if (is.na(s_squared)) {
+    s_squared <<- rss / (m - n - 1)
+  }
+  return(s_squared)
+}
+get_rss = function(y, yhat) {
+  return(sum((y - yhat)^2))
+}
+get_tss = function(y) {
+  return(sum((y - mean(y))^2))
+}
+get_r_squared = function(rss, tss) {
+  return(1-rss/tss)
+}
+get_r_squared_adjusted = function(rss, tss, m, n) {
+  return(1 - (1 - get_r_squared(rss, tss)) * (m - 1) / (m - n - 1))
+}
+get_c_p = function(rss, m, p) {
+  return(rss / get_s_squared(rss, m, p) - (m - 2*p - 2))
+}
+get_rss_rsquared_rsquareda_cp = function(x, y) {
+  beta = as.numeric(lm(y ~ x)$coefficients) # extracting coefficients
+  x = cbind(matrix(1, nrow=nrow(x), ncol=1), x) # adding a column of 1 for beta_0
+  yhat = as.vector(x%*%beta) # getting predicted y
+  rss = get_rss(y, yhat) # getting residual sum of squares
+  tss = get_tss(y) # getting y - mean(y)
+  r_squared = get_r_squared(rss, tss) # getting r squared
+  r_squared_a = get_r_squared_adjusted(rss, tss, length(y), ncol(x) - 1) # getting adjusted r squared
+  c_p = get_c_p(rss, length(y), ncol(x) - 1) # getting C_p
+  return(list(rss, r_squared, r_squared_a, c_p))
+}
+```
+
+```{r}
+ret = get_rss_rsquared_rsquareda_cp(x, y)
+print(ret[[1]])
+print(ret[[2]])
+print(ret[[3]])
+print(ret[[4]])
+print(s_squared)
+```
+```{r}
+
+a = 0
+min_rss = c()
+min_value_rss = list()
+max_rsquared = c()
+max_value_rsquared = list()
+max_rsquared_a = c()
+max_value_rsquared_a = list()
+min_cp = c()
+min_value_cp = list()
+
+for (i in 1:ncol(x)) {
+  min_rss = c(min_rss, Inf)
+  max_rsquared= c(max_rsquared, 0)
+  max_rsquared_a = c(max_rsquared_a, 0)
+  min_cp = c(min_cp, Inf)
+  min_value_rss[[i]] = c(0)
+  max_value_rsquared[[i]] = c(0)
+  max_value_rsquared_a[[i]] = c(0)
+  min_value_cp[[i]] = c(0)
+}
+
+number2binary = function(number, noBits) {
+   binary_vector = rev(as.numeric(intToBits(number)))
+   if(missing(noBits)) {
+      return(binary_vector)
+   } else {
+      binary_vector[-(1:(length(binary_vector) - noBits))]
+   }
+}
+
+recalculate_cols = function(x, mask) {
+  i = length(mask)
+  
+  while(i > 0) {
+    if (mask[i] == 0) {
+      x = x[-i]
+    }
+    i = i-1
+  }
+  return(x)
+}
+
+recalculate_x = function(x, mask) {
+  i = length(mask)
+  
+  while(i > 0) {
+    if (mask[i] == 0) {
+      x = x[,-i]
+    }
+    i = i-1
+  }
+  
+  if (is.matrix(x)) {
+    return(x)
+  }
+  
+  return(matrix(x, nrow=length(x), ncol=1))
+}
+
+
+evaluate = function(x, y, i) {
+  attribute_mask = as.integer(number2binary(i, ncol(x)))
+  
+  x = recalculate_x(x, attribute_mask)
+  
+  p = ncol(x)
+
+  res = get_rss_rsquared_rsquareda_cp(x, y)
+  
+  rss = res[[1]]
+  r_sq = res[[2]]
+  r_sq_a = res[[3]]
+  c_p = res[[4]]
+  
+  if (rss < min_rss[p]) {
+    min_rss[p] <<- rss
+    min_value_rss[[p]] <<- attribute_mask
+  }
+  
+  if (r_sq > max_rsquared[p]) {
+    max_rsquared[p] <<- r_sq
+    max_value_rsquared[[p]] <<- attribute_mask
+  }
+  
+  if (r_sq_a > max_rsquared_a[p]) {
+    max_rsquared_a[p] <<- r_sq_a
+    max_value_rsquared_a[[p]] <<- attribute_mask
+  }
+  
+  if (c_p < min_cp[p]) {
+    min_cp[p] <<- c_p
+    min_value_cp[[p]] <<- attribute_mask
+  }
+}
+
+search_best_model = function(x, y) {
+  i = 2^(ncol(x)) - 1
+  while (i > 0) {
+    evaluate(x, y, i)
+    i = i-1
+  }
+}
+
+search_best_model(x, y)
+
+```
+
+```{r}
+cat("rss", "\n")
+min_rss
+min_value_rss
+cat("rsquared", "\n")
+max_rsquared
+max_value_rsquared
+cat("rsquared_a", "\n")
+max_rsquared_a
+max_value_rsquared_a
+cat("c_p", "\n")
+min_cp
+min_value_cp
+```
+```{r}
+plot(1:ncol(x), min_rss)
+plot(1:ncol(x), max_rsquared)
+plot(1:ncol(x), max_rsquared_a)
+plot(1:ncol(x), min_cp)
+```
+
+```{r}
+evaluate = function(x, y, mask) {
+  x = recalculate_x(x, mask)
+  rez = lm(y~x)
+  print(summary(rez))
+}
+get_p_value = function(x, y, mask) {
+  x = recalculate_x(x, mask)
+  rez = lm(y~x)
+  f = summary(rez)$fstatistic
+  p = pf(f[1],f[2],f[3],lower.tail=F)
+  return(as.numeric(p))
+}
+max_index = 0
+min_p_value = Inf
+index = 0
+for (mask in min_value_rss) {
+  index = index + 1
+  p_value = get_p_value(x, y, mask)
+  
+  if (min_p_value > p_value) {
+    min_p_value = p_value
+    max_index = index
+  }
+}
+print("Best model")
+column_names = names(house)[-1]
+best_mask = min_value_rss[[max_index]]
+recalculate_cols(column_names, best_mask)
+evaluate(x, y, best_mask)
+```
+
+```{r}
+house
+```
