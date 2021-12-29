@@ -205,10 +205,17 @@ plot(1:ncol(x), min_cp - (2:(ncol(x)+1)))
 ```
 
 ```{r}
-evaluate = function(x, y, mask) {
+evaluate_2 = function(x, y, mask, verbose) {
   x = recalculate_x(x, mask)
   rez = lm(y~x)
-  print(summary(rez))
+  if (verbose == TRUE) {
+    print(summary(rez))
+  }
+  
+  beta = as.numeric(rez$coefficients) # extracting coefficients
+  x = cbind(matrix(1, nrow=nrow(x), ncol=1), x) # adding a column of 1 for beta_0
+  yhat = as.vector(x%*%beta)
+  return(yhat)
 }
 get_p_value = function(x, y, mask) {
   x = recalculate_x(x, mask)
@@ -233,9 +240,245 @@ print("Best model")
 column_names = names(house)[-1]
 best_mask = min_value_rss[[max_index]]
 recalculate_cols(column_names, best_mask)
-evaluate(x, y, best_mask)
+evaluate_2(x, y, best_mask, verbose=TRUE)
 ```
 
 ```{r}
-house
+get_selection_results = function(x, y, alpha, verbose, selection) {
+  rez = selection(x, y, alpha)
+  if (is.null(rez)) {
+    if (verbose == TRUE) {
+      print("No submodel using forward pass")
+    }
+    
+    return(NULL)
+  }
+  column_names = names(house)[-1]
+  if (verbose == TRUE) {
+    print("Selected attributes:")
+    for (i in rez) {
+      print(column_names[i])
+    }
+  }
+  
+  
+  selected_submodel = matrix(x[,rez[1]], nrow=length(x[,rez[1]]), ncol=1)
+  for (i in 2:length(rez)) {
+    selected_submodel = cbind(selected_submodel, x[,rez[i]])
+  }
+  
+  rez = lm(y~selected_submodel)
+  if (verbose == TRUE) {
+    print(summary(rez))
+  }
+  
+  beta = as.numeric(rez$coefficients) # extracting coefficients
+  selected_submodel = cbind(matrix(1, nrow=nrow(selected_submodel), ncol=1), selected_submodel) # adding a column of 1 for beta_0
+  yhat = as.vector(selected_submodel%*%beta) # getting predicted y
+  
+  return(yhat)
+}
 ```
+
+```{r}
+forward_selection = function(x, y, alpha) {
+  good_p_values = c()
+  indices = c()
+  for (i in 1:ncol(x)) {
+    col = x[,i]
+    rez = lm(y~col)
+    p_value = summary(rez)$coefficients[2, 4]
+    if (p_value < alpha) {
+      good_p_values = c(good_p_values, p_value)
+      indices = c(indices, i)
+    }
+  }
+  if (length(good_p_values) == 0) {
+    return(NULL)
+  }
+  index = which.min(good_p_values)
+  first_col = indices[index]
+  
+  selected_submodel = matrix(x[,first_col], nrow=length(x[,first_col]), ncol=1)
+  selected_indices = c(first_col)
+  
+  while(TRUE) {
+    good_p_values = c()
+    indices = c()
+    
+    if (length(selected_indices) == ncol(x)) {
+      break
+    }
+    
+    for (i in 1:ncol(x)) {
+      if (i %in% selected_indices) {
+        next
+      }
+      new_submodel = cbind(selected_submodel, x[,i])
+      rez = lm(y~new_submodel)
+      
+      p_value = summary(rez)$coefficients[ncol(new_submodel) + 1, 4]
+      if (p_value < alpha) {
+        good_p_values = c(good_p_values, p_value)
+        indices = c(indices, i)
+      }
+    }
+    
+    if (length(good_p_values) == 0) {
+      break
+    }
+    index = which.min(good_p_values)
+    
+    selected_submodel = cbind(selected_submodel, x[,indices[index]])
+    selected_indices = c(selected_indices, indices[index])
+  }
+  
+  return(selected_indices)
+}
+no_discard = get_selection_results(x, y, 0.05, TRUE, forward_selection)
+```
+```{r}
+backward_selection = function(x, y, alpha) {
+  selected_indices = 1:ncol(x)
+  removed_indices = c()
+  
+  while(TRUE) {
+    if (length(selected_indices) == 0) {
+      return(NULL)
+    }
+    
+    bad_p_values = c()
+    indices = c()
+    
+    rez = lm(y~x) 
+    p_values = summary(rez)$coefficients[,4]
+    p_values = p_values[-1]
+    
+    if (max(p_values) <= alpha) {
+      break
+    }
+    
+    index = which.max(p_values)
+    x = x[,-index]
+
+    for (i in removed_indices) {
+      if (index >= i) {
+        index = index + 1
+      }
+    }
+    
+    removed_indices = c(removed_indices, index)
+    removed_indices = sort(removed_indices)
+    selected_indices = selected_indices[!selected_indices %in% removed_indices]
+    
+    
+  }
+  
+  return(selected_indices)
+  
+}
+
+no_discard = get_selection_results(x, y, 0.05, TRUE, backward_selection)
+```
+```{r}
+stepwise_selection = function(x, y, alpha) {
+  good_p_values = c()
+  indices = c()
+  for (i in 1:ncol(x)) {
+    col = x[,i]
+    rez = lm(y~col)
+    p_value = summary(rez)$coefficients[2, 4]
+    if (p_value < alpha) {
+      good_p_values = c(good_p_values, p_value)
+      indices = c(indices, i)
+    }
+  }
+  if (length(good_p_values) == 0) {
+    return(NULL)
+  }
+  index = which.min(good_p_values)
+  first_col = indices[index]
+  
+  selected_submodel = matrix(x[,first_col], nrow=length(x[,first_col]), ncol=1)
+  selected_indices = c(first_col)
+  
+  while(TRUE) {
+    
+    while(TRUE) {
+      bad_p_values = c()
+      indices = c()
+      
+      rez = lm(y~selected_submodel) 
+      p_values = summary(rez)$coefficients[,4]
+      p_values = p_values[-1]
+      
+      if (max(p_values) <= alpha) {
+        break
+      }
+      
+      index = which.max(p_values)
+      selected_submodel = selected_submodel[,-index]
+      if (!is.matrix(selected_submodel)) {
+        selected_submodel = matrix(selected_submodel, nrow=length(selected_submodel), ncol=1)
+      }
+      
+      selected_indices = selected_indices[-index]
+    }
+    
+    
+    good_p_values = c()
+    indices = c()
+    
+    if (length(selected_indices) == ncol(x)) {
+      break
+    }
+    
+    for (i in 1:ncol(x)) {
+      if (i %in% selected_indices) {
+        next
+      }
+      new_submodel = cbind(selected_submodel, x[,i])
+      rez = lm(y~new_submodel)
+      
+      p_value = summary(rez)$coefficients[ncol(new_submodel) + 1, 4]
+      if (p_value < alpha) {
+        good_p_values = c(good_p_values, p_value)
+        indices = c(indices, i)
+      }
+    }
+    
+    if (length(good_p_values) == 0) {
+      break
+    }
+    
+    index = which.min(good_p_values)
+    
+    selected_submodel = cbind(selected_submodel, x[,indices[index]])
+    
+    selected_indices = c(selected_indices, indices[index])
+  }
+  
+  return(selected_indices)
+  
+}
+
+no_discard = get_selection_results(x, y, 0.05, TRUE, stepwise_selection)
+```
+
+```{r}
+create_graphic = function(x, y, alpha) {
+  forward_y = get_selection_results(x, y, alpha, FALSE, forward_selection)
+  backward_y = get_selection_results(x, y, alpha, FALSE, backward_selection)
+  stepwise_y = get_selection_results(x, y, alpha, FALSE, stepwise_selection)
+  best_y = evaluate_2(x, y, best_mask, verbose = FALSE)
+  
+  plot(y, best_y, xlab = "y", ylab="yhat", xlim=c(0, max(y)), ylim = c(0, max(forward_y, backward_y, stepwise_y, best_y)))
+  points(y, forward_y, col="red", pch = ".", cex=4)
+  points(y, backward_y, col="blue", pch = ".", cex=4)
+  points(y, stepwise_y, col="green")
+  abline(0,1)
+}
+create_graphic(x, y, 0.05)
+```
+
+
