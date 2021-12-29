@@ -165,7 +165,7 @@ evaluate = function(x, y, i) {
     max_value_rsquared_a[[p]] <<- attribute_mask
   }
   
-  if (c_p < min_cp[p]) {
+  if (abs(c_p - p - 1) < abs(min_cp[p] - p - 1)) {
     min_cp[p] <<- c_p
     min_value_cp[[p]] <<- attribute_mask
   }
@@ -186,22 +186,22 @@ search_best_model(x, y)
 ```{r}
 cat("rss", "\n")
 min_rss
-min_value_rss
+#min_value_rss
 cat("rsquared", "\n")
 max_rsquared
-max_value_rsquared
+#max_value_rsquared
 cat("rsquared_a", "\n")
 max_rsquared_a
-max_value_rsquared_a
+#max_value_rsquared_a
 cat("c_p", "\n")
 min_cp
-min_value_cp
+#min_value_cp
 ```
 ```{r}
 plot(1:ncol(x), min_rss)
 plot(1:ncol(x), max_rsquared)
 plot(1:ncol(x), max_rsquared_a)
-plot(1:ncol(x), min_cp)
+plot(1:ncol(x), min_cp - (2:(ncol(x)+1)))
 ```
 
 ```{r}
